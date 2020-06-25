@@ -22,4 +22,8 @@ class UserPolicy
     public function update(User $curUser, User $user) {
         return $curUser->id === $user->id;
     }
+
+    public function destroy(User $curUser, User $user) {
+        return $curUser->is_admin && $curUser->id !== $user->id;
+    }
 }
