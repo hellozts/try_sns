@@ -46,16 +46,4 @@ class SessionsController extends Controller
         session()->flash('success', '您已经成功退出登录');
         return redirect('login');
     }
-
-    protected function sendEmailConfirmationTo($user) {
-        $view = 'emails.confirm';
-        $data = compact('user');
-        $from = 'hellozts@gmail.com';
-        $name = 'hellozts';
-        $to = $user->email;
-        $subject = '感谢注册微博应用! 请确认你的邮箱';
-        Mail::send($view, $data, function($message) use ($from, $name, $to, $subject) {
-            $message->from($from, $name)->to($to)->subject($subject);
-        });
-    }
 }
