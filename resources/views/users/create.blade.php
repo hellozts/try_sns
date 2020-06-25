@@ -1,15 +1,37 @@
 @extends('layout')
+
+@section('title', '注册')
+
 @section('content')
-    <div class="jumbotron">
-        <h1>Hello Laravel</h1>
-        <p class="lead">
-            你现在所看到的是 <a href="https://learnku.com/courses/laravel-essential-training">Laravel 入门教程</a> 的示例项目主页。
-        </p>
-        <p>
-            一切，将从这里开始。
-        </p>
-        <p>
-            <a class="btn btn-lg btn-success" href="{{ route('signup') }}" role="button">现在注册</a>
-        </p>
+<div class="offset-md-2 col-md-8">
+    <div class="card">
+        <div class="card-header">
+            <h5>注册</h5>
+        </div>
+        <div class="card-body">
+            <form method="post" action="{{ route('users.store') }}">
+                <div class="form-group">
+                    <label for="name">名称: </label>
+                    <input type="text" name="name" class="form-control" value="{{ old('name') }}" />
+                </div>
+                <div class="form-group">
+                    <label for="email">邮箱：</label>
+                    <input type="text" name="email" class="form-control" value="{{ old('email') }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">密码：</label>
+                    <input type="password" name="password" class="form-control" value="{{ old('password') }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="password_confirmation">确认密码：</label>
+                    <input type="password" name="password_confirmation" class="form-control" value="{{ old('password_confirmation') }}">
+                </div>
+
+                <button type="submit" class="btn btn-primary">注册</button>
+            </form>
+        </div>
     </div>
+</div>
 @stop
